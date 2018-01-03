@@ -6,8 +6,6 @@ package com.izico.geoquizz.model
  */
 
 class Score {
-
     private var userName: String? = null
     private var value: Long = 0
-
 }

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">GeoQuizz</string>
     <string name="action_settings">Settings</string>
+
+    <!-- databases-->
+    <string name="country_database">country.db</string>
 </resources>

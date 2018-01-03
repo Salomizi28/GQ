@@ -2,7 +2,6 @@ package com.izico.geoquizz.helpers
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import com.izico.geoquizz.database.CountryDatabaseManager
 import com.izico.geoquizz.model.Country
@@ -16,6 +15,7 @@ object DatabasesHelper {
 
     private val FIRST_LAUNCH_KEY = "firstLaunch"
     private val DATABASES_PATH = "databsesPath"
+
     private var sharedPrefs: SharedPreferences? = null
     private var countryManager: CountryDatabaseManager? = null
 
@@ -25,11 +25,11 @@ object DatabasesHelper {
         val isFirstLaunchDone = this.sharedPrefs?.getBoolean(FIRST_LAUNCH_KEY, false)
 
         if (!isFirstLaunchDone!!) {
-            initDatabases(context)
+            this.countryManager = CountryDatabaseManager(context, "countries_fr.txt")
         } else {
             Log.i("Database init", "Initialization already done")
 
-            val databasePath = this.sharedPrefs?.getString(DATABASES_PATH, null)
+            /*val databasePath = this.sharedPrefs?.getString(DATABASES_PATH, null)
             //val appPath = context.getDatabasePath("country.db").toString()  // Output : /data/data/application_package_name/files/
 
             if (databasePath != null) {
@@ -42,14 +42,8 @@ object DatabasesHelper {
                     println(student.name)
                     println()
                 }
-            }
+            }*/
         }
-    }
-
-    fun initDatabases(context: Context) {
-        this.countryManager = CountryDatabaseManager(context, "countries_fr.txt")
-
-        println(this.countryManager?.getWritableDatabase()?.isOpen)
     }
 
     fun finalizeInitialization(context: Context, dbPath: String?) {

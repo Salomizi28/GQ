@@ -11,7 +11,4 @@ import ninja.sakib.pultusorm.annotations.PrimaryKey
 class Country {
     var shortName: String? = null
     var name: String? = null
-
-
-
 }
