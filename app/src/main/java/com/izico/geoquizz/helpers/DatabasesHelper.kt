@@ -6,6 +6,10 @@ import android.util.Log
 import com.izico.geoquizz.database.CountryDatabaseManager
 import com.izico.geoquizz.model.Country
 import ninja.sakib.pultusorm.core.PultusORM
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.IOException
+import java.nio.charset.Charset
 
 /**
  * Helper to do all the initialization actions
@@ -19,7 +23,7 @@ object DatabasesHelper {
     private var sharedPrefs: SharedPreferences? = null
     private var countryManager: CountryDatabaseManager? = null
 
-    fun init(context: Context) {
+    /*fun init(context: Context) {
         this.sharedPrefs = context.getSharedPreferences(null, Context.MODE_PRIVATE)
 
         val isFirstLaunchDone = this.sharedPrefs?.getBoolean(FIRST_LAUNCH_KEY, false)
@@ -43,6 +47,34 @@ object DatabasesHelper {
                     println()
                 }
             }*/
+        }
+    }*/
+
+    fun init(context: Context)  {
+        val jsonString = loadJSONFromAssets(context)
+
+        val jsonArray = JSONArray(jsonString)
+
+
+
+    }
+
+    fun loadJSONFromAssets(context: Context): String {
+        var json: String? = null
+        try {
+            val stream = context.assets.open("countries_fr.json")
+            val size = stream.available()
+            val buffer = ByteArray(size)
+
+            stream.read(buffer)
+            stream.close()
+            json = String(buffer, Charset.forName("UTF-8"))
+
+
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+        } finally {
+            return json.toString()
         }
     }
 
