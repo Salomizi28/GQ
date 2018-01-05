@@ -9,6 +9,8 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
+    private val REQUEST_WRITE_PERMISSION = 3
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -24,8 +26,8 @@ class HomeActivity : AppCompatActivity() {
         init()
     }
 
-    fun init() {
-        DatabasesHelper.init(this)
+    private fun init() {
+            DatabasesHelper.init(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -43,4 +45,21 @@ class HomeActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    /**override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            REQUEST_WRITE_PERMISSION -> validatePermissions(grantResults)
+            else -> {
+                finish()
+            }
+        }
+    }
+
+    fun validatePermissions(grantResults: IntArray) {
+        if (grantResults.isNotEmpty() && grantResults[0] == PermissionChecker.PERMISSION_GRANTED) {
+            DatabasesHelper.init(this)
+        } else {
+            finish()
+        }
+    }*/
 }

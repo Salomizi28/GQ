@@ -9,7 +9,13 @@ import ninja.sakib.pultusorm.annotations.PrimaryKey
  */
 
 class Country {
+    @PrimaryKey
+    @AutoIncrement
+    var id: Int = 0
+
     var name: String? = null
-    var capitalCity: String? = null
-    var code: String? = null
+    var capital: String? = null
+    var code2: String? = null
+    var code3: String? = null
+
 }

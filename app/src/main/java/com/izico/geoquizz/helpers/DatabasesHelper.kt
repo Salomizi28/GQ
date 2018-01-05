@@ -1,15 +1,14 @@
 package com.izico.geoquizz.helpers
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
-import com.izico.geoquizz.database.CountryDatabaseManager
+import com.google.gson.Gson
 import com.izico.geoquizz.model.Country
 import ninja.sakib.pultusorm.core.PultusORM
 import org.json.JSONArray
-import org.json.JSONObject
 import java.io.IOException
 import java.nio.charset.Charset
+import java.sql.SQLException
 
 /**
  * Helper to do all the initialization actions
@@ -18,49 +17,65 @@ import java.nio.charset.Charset
 object DatabasesHelper {
 
     private val FIRST_LAUNCH_KEY = "firstLaunch"
-    private val DATABASES_PATH = "databsesPath"
-
-    private var sharedPrefs: SharedPreferences? = null
-    private var countryManager: CountryDatabaseManager? = null
-
-    /*fun init(context: Context) {
-        this.sharedPrefs = context.getSharedPreferences(null, Context.MODE_PRIVATE)
-
-        val isFirstLaunchDone = this.sharedPrefs?.getBoolean(FIRST_LAUNCH_KEY, false)
-
-        if (!isFirstLaunchDone!!) {
-            this.countryManager = CountryDatabaseManager(context, "countries_fr.txt")
-        } else {
-            Log.i("Database init", "Initialization already done")
-
-            /*val databasePath = this.sharedPrefs?.getString(DATABASES_PATH, null)
-            //val appPath = context.getDatabasePath("country.db").toString()  // Output : /data/data/application_package_name/files/
-
-            if (databasePath != null) {
-                val pultusORM: PultusORM = PultusORM("country.db", databasePath)
-
-                val countries = pultusORM.find(Country())
-
-                for (it in countries) {
-                    val student = it as Country
-                    println(student.name)
-                    println()
-                }
-            }*/
-        }
-    }*/
+    private val COUNTRY_DATABASE = "country.db"
 
     fun init(context: Context)  {
-        val jsonString = loadJSONFromAssets(context)
+        val sharedPrefs = context.getSharedPreferences(null, Context.MODE_PRIVATE)
 
-        val jsonArray = JSONArray(jsonString)
+        val isFirstLaunchDone = sharedPrefs?.getBoolean(FIRST_LAUNCH_KEY, false)
 
+        if (!isFirstLaunchDone!!) {
+            // First launch of the app
+            val jsonString = loadJSONFromAssets(context)
+            val jsonArray = JSONArray(jsonString)
+            val pultus = openDatabase(context)
 
+            try {
+                for (index in 0..(jsonArray.length() - 1)) {
+                    val newCountry = Gson().fromJson(jsonArray.getString(index), Country::class.java)
+                    pultus.save(newCountry)
+                }
+                pultus.close()
+                finalizeInitialization(context)
+
+            } catch (e: SQLException) {
+                e.printStackTrace()
+            }
+        } else {
+            /*val pultusORM = openDatabase(context)
+            val countries = pultusORM.find(Country())
+            for (it in countries) {
+                val country = it as Country
+                println(country.capital)
+                println()
+            }*/
+
+            Log.i("INIT", "Database already exists")
+        }
 
     }
 
-    fun loadJSONFromAssets(context: Context): String {
-        var json: String? = null
+    /**
+     * Open a database where the records will be saved
+     */
+    private fun openDatabase(context: Context): PultusORM {
+        var databasePath = context.getDatabasePath(COUNTRY_DATABASE).toString()
+        databasePath = databasePath.substring(0, databasePath.lastIndexOf(("/")))
+
+        try {
+            return PultusORM(COUNTRY_DATABASE, databasePath)
+        } catch (e: SQLException) {
+            e.printStackTrace()
+            databasePath = context.filesDir.absolutePath
+            return PultusORM(COUNTRY_DATABASE, databasePath)
+        }
+    }
+
+    /**
+     * Load the assets' file and parse it
+     */
+    private fun loadJSONFromAssets(context: Context): String {
+        var json = ""
         try {
             val stream = context.assets.open("countries_fr.json")
             val size = stream.available()
@@ -78,15 +93,13 @@ object DatabasesHelper {
         }
     }
 
-    fun finalizeInitialization(context: Context, dbPath: String?) {
-        val editor = this.sharedPrefs?.edit();
+    /**
+     * Persist the first launch indicator
+     */
+    private fun finalizeInitialization(context: Context) {
+        val sharedPrefs = context.getSharedPreferences(null, Context.MODE_PRIVATE)
+        val editor = sharedPrefs?.edit();
         editor?.putBoolean(FIRST_LAUNCH_KEY, true)
-
-        if (dbPath != null) {
-            val formattedPath = dbPath.substring(0, dbPath.lastIndexOf("/"))
-            editor?.putString(DATABASES_PATH, formattedPath)
-        }
-
         editor?.commit()
     }
 }
