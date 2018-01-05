@@ -1,3 +1,11 @@
+
+/*
+ * Created by Salomon ROSSELL on 05/01/18 22:18
+ * Copyright (c) 2018. All rights reserved.
+ *
+ * Last modified 05/01/18 22:06
+ */
+
 package com.izico.geoquizz
 
 import android.os.Bundle
@@ -6,6 +14,8 @@ import android.view.Menu
 import android.view.MenuItem
 import com.izico.geoquizz.helpers.DatabasesHelper
 import kotlinx.android.synthetic.main.activity_home.*
+
+
 
 class HomeActivity : AppCompatActivity() {
 

@@ -1,8 +1,15 @@
+
+/*
+ * Created by Salomon ROSSELL on 05/01/18 22:18
+ * Copyright (c) 2018. All rights reserved.
+ *
+ * Last modified 05/01/18 19:50
+ */
+
 package com.izico.geoquizz.model
 
 import ninja.sakib.pultusorm.annotations.AutoIncrement
 import ninja.sakib.pultusorm.annotations.PrimaryKey
-
 
 /**
  * Implementation of a Country

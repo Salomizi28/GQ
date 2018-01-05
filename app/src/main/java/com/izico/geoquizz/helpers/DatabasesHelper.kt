@@ -1,3 +1,11 @@
+
+/*
+ * Created by Salomon ROSSELL on 05/01/18 22:18
+ * Copyright (c) 2018. All rights reserved.
+ *
+ * Last modified 05/01/18 22:18
+ */
+
 package com.izico.geoquizz.helpers
 
 import android.content.Context
