@@ -8,36 +8,47 @@
 
 package com.izico.geoquizz
 
+import android.content.Intent
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.izico.geoquizz.helpers.DatabasesHelper
-import kotlinx.android.synthetic.main.activity_home.*
-
-
 
 class HomeActivity : AppCompatActivity() {
 
-    private val REQUEST_WRITE_PERMISSION = 3
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        setSupportActionBar(toolbar)
 
-        /*fab.setOnClickListener { view ->
+        // no data binding
+        //setContentView(R.layout.activity_home)
+
+        /*setSupportActionBar(toolbar)
+        fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }*/
 
-        //val binding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.activity_home)
+        // DATA BINDING
+        val binding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.content_home)
+        binding.setVariable(com.izico.geoquizz.BR.buttonHandler, this)
+        binding.executePendingBindings()
 
-        init()
+        DatabasesHelper.init(this)
     }
 
-    private fun init() {
-            DatabasesHelper.init(this)
+    fun onGameChosen(view: View) {
+        when (view.id) {
+            R.id.capitals_game_button -> launchCapitalCityGame()
+        }
+    }
+
+    private fun launchCapitalCityGame() {
+        val intent = Intent(this, CapitalCitiesActivity::class.java)
+        this.startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

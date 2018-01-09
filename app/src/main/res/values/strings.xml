@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">GeoQuizz</string>
     <string name="action_settings">Settings</string>
+
+    <!-- GAMES -->
+    <string name="capitals">Capitales</string>
+    <string name="flags">Drapeaux</string>
+    <string name="capitals_index">Index des capitales</string>
 </resources>
