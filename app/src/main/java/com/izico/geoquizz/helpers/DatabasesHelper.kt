@@ -66,7 +66,7 @@ object DatabasesHelper {
     /**
      * Open a database where the records will be saved
      */
-    private fun openDatabase(context: Context): PultusORM {
+    fun openDatabase(context: Context): PultusORM {
         var databasePath = context.getDatabasePath(COUNTRY_DATABASE).toString()
         databasePath = databasePath.substring(0, databasePath.lastIndexOf(("/")))
 

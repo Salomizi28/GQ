@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Salomon ROSSELL on 08/01/18 13:41
+  ~ Copyright (c) 2018. All rights reserved.
+  ~
+  ~ Last modified 08/01/18 13:41
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <data>
+        <variable
+            name="question"
+            type="String"/>
+        <variable
+            name="firstProposition"
+            type="com.izico.geoquizz.model.Country"/>
+        <variable
+            name="secondProposition"
+            type="com.izico.geoquizz.model.Country"/>
+        <variable
+            name="thirdProposition"
+            type="com.izico.geoquizz.model.Country"/>
+        <variable
+            name="fourthProposition"
+            type="com.izico.geoquizz.model.Country"/>
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.izico.geoquizz.CapitalCitiesActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="118dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{question}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.119" />
+
+        <Button
+            android:id="@+id/first_proposition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{firstProposition.capital}" />
+
+        <Button
+            android:id="@+id/second_proposition"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.637"
+            app:layout_constraintStart_toEndOf="@+id/first_proposition"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{secondProposition.capital}" />
+
+        <Button
+            android:id="@+id/third_proposition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fourth_proposition"
+            app:layout_constraintHorizontal_bias="0.366"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_proposition"
+            app:layout_constraintVertical_bias="0.497"
+            android:text="@{thirdProposition.capital}" />
+
+        <Button
+            android:id="@+id/fourth_proposition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/second_proposition"
+            android:text="@{fourthProposition.capital}" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

@@ -6,4 +6,8 @@
     <string name="capitals">Capitales</string>
     <string name="flags">Drapeaux</string>
     <string name="capitals_index">Index des capitales</string>
+
+    <!-- QUESTION -->
+    <string name="question_start">What is the</string>
+    <string name="capital_question">capital city of </string>
 </resources>

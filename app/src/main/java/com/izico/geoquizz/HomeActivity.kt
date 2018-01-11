@@ -34,7 +34,7 @@ class HomeActivity : AppCompatActivity() {
 
         // DATA BINDING
         val binding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.content_home)
-        binding.setVariable(com.izico.geoquizz.BR.buttonHandler, this)
+        binding.setVariable(BR.buttonHandler, this)
         binding.executePendingBindings()
 
         DatabasesHelper.init(this)
