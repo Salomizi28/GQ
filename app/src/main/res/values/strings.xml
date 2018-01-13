@@ -8,6 +8,15 @@
     <string name="capitals_index">Index des capitales</string>
 
     <!-- QUESTION -->
-    <string name="question_start">What is the</string>
-    <string name="capital_question">capital city of </string>
+    <string name="city_game_instructions">Qulle est la capitale de ce pays ?</string>
+
+    <!-- SCORE -->
+    <string name="final_score">Score final: </string>
+    <string name="score_highest">Excellent !</string>
+    <string name="score_high">Bravo !</string>
+    <string name="score_average">Pas mal !</string>
+    <string name="score_low">Mouais !</string>
+    <string name="score_lowest">Franchement pas top !</string>
+    <string name="score_default">Soit !</string>
+
 </resources>

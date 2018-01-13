@@ -13,15 +13,17 @@ package com.izico.geoquizz.helpers
 
 object GameHelper {
 
-    private var questionsNumber = 10
+    val SCORE_EXTRA = "score"
+
+    private var questionsCount = 10
     private var propositionsNumber = 4
 
     fun getPropositionsNumber(): Int {
         return propositionsNumber
     }
 
-    fun getQuestionsNumber(): Int {
-        return questionsNumber
+    fun getQuestionsCount(): Int {
+        return questionsCount
     }
 
 }

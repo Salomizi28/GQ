@@ -27,6 +27,9 @@
         <variable
             name="fourthProposition"
             type="com.izico.geoquizz.model.Country"/>
+        <variable
+            name="answerHandler"
+            type="com.izico.geoquizz.CapitalCitiesActivity"/>
 
     </data>
 
@@ -60,7 +63,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{firstProposition.capital}" />
+            android:text="@{firstProposition.capital}"
+            android:onClick="@{answerHandler::checkAnswer}"/>
 
         <Button
             android:id="@+id/second_proposition"

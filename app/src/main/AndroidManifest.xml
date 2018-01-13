@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CapitalCitiesActivity"></activity>
+        <activity android:name=".CapitalCitiesActivity" />
+        <activity android:name=".ScoreActivity"></activity>
     </application>
 
 </manifest>

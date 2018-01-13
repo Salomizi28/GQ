@@ -20,6 +20,6 @@ class Score {
     @AutoIncrement
     var id: Int = 0
 
-    private var userName: String? = null
-    private var value: Long = 0
+    var userName: String? = null
+    var value: Long = 0
 }

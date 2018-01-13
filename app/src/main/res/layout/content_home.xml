@@ -38,7 +38,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_title"
             android:drawableTop="@mipmap/ic_launcher_round"
-            android:onClick="@{buttonHandler.onGameChosen}" />
+            android:onClick="@{buttonHandler::onGameChosen}" />
 
         <Button
             android:id="@+id/flags_game_button"
@@ -49,7 +49,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_title"
             android:drawableTop="@mipmap/ic_launcher_round"
-            android:onClick="@{buttonHandler.onGameChosen}" />
+            android:onClick="@{buttonHandler::onGameChosen}" />
 
         <Button
             android:id="@+id/capitals_index_button"
@@ -60,7 +60,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/capitals_game_button"
             android:drawableTop="@mipmap/ic_launcher_round"
-            android:onClick="@{buttonHandler.onGameChosen}" />
+            android:onClick="@{buttonHandler::onGameChosen}" />
 
     </android.support.constraint.ConstraintLayout>
 

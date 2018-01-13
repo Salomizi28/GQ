@@ -70,13 +70,13 @@ object DatabasesHelper {
         var databasePath = context.getDatabasePath(COUNTRY_DATABASE).toString()
         databasePath = databasePath.substring(0, databasePath.lastIndexOf(("/")))
 
-        try {
+        /*try {
             return PultusORM(COUNTRY_DATABASE, databasePath)
         } catch (e: SQLException) {
-            e.printStackTrace()
+            e.printStackTrace()*/
             databasePath = context.filesDir.absolutePath
             return PultusORM(COUNTRY_DATABASE, databasePath)
-        }
+        //}
     }
 
     /**
