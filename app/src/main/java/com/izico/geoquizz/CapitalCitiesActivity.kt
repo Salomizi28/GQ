@@ -90,7 +90,7 @@ class CapitalCitiesActivity : AppCompatActivity() {
             val newCountry = this.countries.get(randomIndex) as Country
 
             val alreadyChosenCountry = this.alreadyAsked.contains(newCountry)
-            if (!propositionsList.contains(newCountry) && alreadyChosenCountry) {
+            if (!propositionsList.contains(newCountry) && !alreadyChosenCountry) {
                 propositionsList.add(newCountry)
             }
 
@@ -128,10 +128,7 @@ class CapitalCitiesActivity : AppCompatActivity() {
     }
 
     private fun retrieveCountries() {
-        //val pultus = DatabasesHelper.openDatabase(this)
-
-        val databasePath = this.filesDir.absolutePath
-        val pultus = PultusORM("country.db", databasePath)
+        val pultus = DatabasesHelper.openDatabase(this)
         this.countries = pultus.find(Country())
         pultus.close()
     }
