@@ -49,6 +49,7 @@ class HomeActivity : AppCompatActivity() {
     private fun launchCapitalCityGame() {
         val intent = Intent(this, CapitalCitiesActivity::class.java)
         this.startActivity(intent)
+        finish()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

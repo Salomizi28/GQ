@@ -28,9 +28,8 @@ class CapitalCitiesActivity : AppCompatActivity() {
     private var countries = mutableListOf<Any>()
     private var countryChosen: Country? = null
     private var questionStart: String? = null
-    private var questionsToBeAsked = 0
+    private var remainingLife = 0
     private var propositionsToBeMade = 0
-    private var questionsAsked = 0
     private var score = 0
 
     private var alreadyAsked = ArrayList<Country>()
@@ -49,7 +48,7 @@ class CapitalCitiesActivity : AppCompatActivity() {
 
         this.questionStart = resources.getString(R.string.city_game_instructions)
 
-        this.questionsToBeAsked = GameHelper.getQuestionsCount()
+        this.remainingLife = GameHelper.getRemainingLife()
         this.propositionsToBeMade = GameHelper.getPropositionsNumber()
 
         // Launch game
@@ -72,12 +71,12 @@ class CapitalCitiesActivity : AppCompatActivity() {
         Log.i("ANSWER", "RIGHT")
 
         ++this.score
-        checkRemainingQuestions()
+        createQuestion()
     }
 
     private fun handleError() {
         Log.i("ANSWER", "WRONG")
-        checkRemainingQuestions()
+        checkRemainingLife()
     }
 
     private fun createQuestion() {
@@ -114,16 +113,17 @@ class CapitalCitiesActivity : AppCompatActivity() {
 
     }
 
-    private fun checkRemainingQuestions() {
-        ++this.questionsAsked
+    private fun checkRemainingLife() {
+        --this.remainingLife
 
-        if (this.questionsAsked < this.questionsToBeAsked) {
+        if (this.remainingLife > 0) {
             createQuestion()
         } else {
             Log.i("QUESTIONS", "End reached")
             val intent = Intent(this, ScoreActivity::class.java)
             intent.putExtra(GameHelper.SCORE_EXTRA, this.score)
             this.startActivity(intent)
+            finish()
         }
     }
 

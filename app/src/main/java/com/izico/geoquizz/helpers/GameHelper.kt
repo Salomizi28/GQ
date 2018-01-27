@@ -15,15 +15,14 @@ object GameHelper {
 
     val SCORE_EXTRA = "score"
 
-    private var questionsCount = 10
-    private var propositionsNumber = 4
+    private val remainingLife = 5
+    private val propositionsNumber = 4
 
     fun getPropositionsNumber(): Int {
         return propositionsNumber
     }
 
-    fun getQuestionsCount(): Int {
-        return questionsCount
+    fun getRemainingLife(): Int {
+        return remainingLife
     }
-
 }

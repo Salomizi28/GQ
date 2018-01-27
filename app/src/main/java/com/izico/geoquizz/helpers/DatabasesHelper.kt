@@ -11,12 +11,14 @@ package com.izico.geoquizz.helpers
 import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
+import com.izico.geoquizz.R
 import com.izico.geoquizz.model.Country
 import ninja.sakib.pultusorm.core.PultusORM
 import org.json.JSONArray
 import java.io.IOException
 import java.nio.charset.Charset
 import java.sql.SQLException
+import java.util.*
 
 /**
  * Helper to do all the initialization actions
@@ -84,8 +86,10 @@ object DatabasesHelper {
      */
     private fun loadJSONFromAssets(context: Context): String {
         var json = ""
+        val fileName = retrieveFileToRead(context)
+
         try {
-            val stream = context.assets.open("countries_fr.json")
+            val stream = context.assets.open(fileName)
             val size = stream.available()
             val buffer = ByteArray(size)
 
@@ -109,5 +113,16 @@ object DatabasesHelper {
         val editor = sharedPrefs?.edit();
         editor?.putBoolean(FIRST_LAUNCH_KEY, true)
         editor?.commit()
+    }
+
+    private fun retrieveFileToRead(context: Context): String {
+        val language = Locale.getDefault().displayLanguage
+
+        return when(language) {
+            context.resources.getString(R.string.french_language) -> "countries_fr.json"
+            else -> {
+                "countries_en.json"
+            }
+        }
     }
 }

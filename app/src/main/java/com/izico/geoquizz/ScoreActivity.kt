@@ -27,19 +27,18 @@ class ScoreActivity : AppCompatActivity() {
         val score = this.intent?.extras?.get(GameHelper.SCORE_EXTRA) as Int
 
         this.dataBinding?.setVariable(BR.comment, computeComment(score))
-        this.dataBinding?.setVariable(BR.finalScore, score)
+        this.dataBinding?.setVariable(BR.finalScore, score.toString())
         this.dataBinding?.executePendingBindings()
     }
 
     private fun computeComment(score: Int): String {
-        val maxScore = GameHelper.getQuestionsCount()
 
         return when (score) {
-            in 0 until (maxScore / 10).toInt() -> this.resources.getString(R.string.score_lowest)
-            in (maxScore / 10).toInt() until (maxScore / 2).toInt() -> this.resources.getString(R.string.score_low)
-            in (maxScore / 2).toInt() until (maxScore / 1.25).toInt() ->  this.resources.getString(R.string.score_average)
-            in (maxScore / 1.25).toInt() until maxScore - 1 ->  this.resources.getString(R.string.score_high)
-            maxScore ->  this.resources.getString(R.string.score_highest)
+            in 0 until 10 -> this.resources.getString(R.string.score_lowest)
+            in 11 until 16 -> this.resources.getString(R.string.score_low)
+            in 17 until 25 ->  this.resources.getString(R.string.score_average)
+            in 26 until 37 ->  this.resources.getString(R.string.score_high)
+            !in 0 until 37 ->  this.resources.getString(R.string.score_highest)
             else -> this.resources.getString(R.string.score_default)
         }
     }

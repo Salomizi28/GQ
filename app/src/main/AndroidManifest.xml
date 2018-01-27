@@ -22,8 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CapitalCitiesActivity" />
-        <activity android:name=".ScoreActivity"></activity>
+        <activity
+            android:name=".CapitalCitiesActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".ScoreActivity"
+            android:screenOrientation="sensorPortrait" />
     </application>
 
 </manifest>

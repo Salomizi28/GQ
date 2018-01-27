@@ -1,22 +1,32 @@
+<!--
+  ~ Created by Salomon ROSSELL on 27/01/18 22:33
+  ~ Copyright (c) 2018. All rights reserved.
+  ~
+  ~ Last modified 27/01/18 22:33
+  -->
+
 <resources>
     <string name="app_name">GeoQuizz</string>
     <string name="action_settings">Settings</string>
 
+    <!-- LANGUAGE -->
+    <string name="french_language" translatable="false">français</string>
+
     <!-- GAMES -->
-    <string name="capitals">Capitales</string>
-    <string name="flags">Drapeaux</string>
-    <string name="capitals_index">Index des capitales</string>
+    <string name="capitals">Capital cities</string>
+    <string name="flags">Flags</string>
+    <string name="capitals_index">Capital cities index</string>
 
     <!-- QUESTION -->
-    <string name="city_game_instructions">Qulle est la capitale de ce pays ?</string>
+    <string name="city_game_instructions">What is the capital city of this country ?</string>
 
     <!-- SCORE -->
-    <string name="final_score">Score final: </string>
+    <string name="final_score">Final score</string>
     <string name="score_highest">Excellent !</string>
     <string name="score_high">Bravo !</string>
-    <string name="score_average">Pas mal !</string>
-    <string name="score_low">Mouais !</string>
-    <string name="score_lowest">Franchement pas top !</string>
-    <string name="score_default">Soit !</string>
+    <string name="score_average">Not too bad !</string>
+    <string name="score_low">Not so good</string>
+    <string name="score_lowest">Wow this is bad !</string>
+    <string name="score_default">Fair enough !</string>
 
 </resources>
