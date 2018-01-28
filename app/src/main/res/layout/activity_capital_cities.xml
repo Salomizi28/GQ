@@ -36,73 +36,77 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.izico.geoquizz.CapitalCitiesActivity">
+        tools:context="com.izico.geoquizz.CapitalCitiesActivity"
+        android:background="@color/ocean_blue">
 
         <TextView
             android:id="@+id/question_label"
+            style="@style/gameTitle"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="40dp"
             android:text="@{question}"
-            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Voici la question qui est trop longue" />
 
         <Button
             android:id="@+id/first_proposition"
+            style="@style/answerButton"
             android:layout_width="@dimen/text_width"
             android:layout_height="@dimen/text_height"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="@dimen/answer_button_margin"
             android:layout_marginTop="60dp"
             android:onClick="@{answerHandler::checkAnswer}"
             android:text="@{firstProposition.capital}"
-            android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/question_label"
             tools:text="Ceci est un texte plutot long" />
 
         <Button
             android:id="@+id/second_proposition"
+            style="@style/answerButton"
             android:layout_width="@dimen/text_width"
             android:layout_height="@dimen/text_height"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="@dimen/answer_button_margin"
             android:onClick="@{answerHandler::checkAnswer}"
             android:text="@{secondProposition.capital}"
-            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/first_proposition"
-            tools:text="OUAGADOUGOU" />
+            tools:text="Ouagadougou" />
 
         <Button
             android:id="@+id/third_proposition"
+            style="@style/answerButton"
             android:layout_width="@dimen/text_width"
             android:layout_height="@dimen/text_height"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="50dp"
-            android:textAlignment="center"
             android:onClick="@{answerHandler::checkAnswer}"
             android:text="@{thirdProposition.capital}"
             app:layout_constraintEnd_toEndOf="@+id/first_proposition"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/first_proposition"
-            app:layout_constraintTop_toBottomOf="@+id/first_proposition" />
+            app:layout_constraintTop_toBottomOf="@+id/first_proposition"
+            tools:text="Andorre-La-Vieille" />
 
         <Button
             android:id="@+id/fourth_proposition"
+            style="@style/answerButton"
             android:layout_width="@dimen/text_width"
             android:layout_height="@dimen/text_height"
             android:layout_marginStart="8dp"
             android:layout_marginTop="50dp"
             android:onClick="@{answerHandler::checkAnswer}"
             android:text="@{fourthProposition.capital}"
-            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/second_proposition"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/second_proposition"
-            app:layout_constraintTop_toBottomOf="@+id/second_proposition" />
+            app:layout_constraintTop_toBottomOf="@+id/second_proposition"
+            tools:text="Paris" />
 
 
     </android.support.constraint.ConstraintLayout>

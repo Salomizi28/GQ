@@ -23,9 +23,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".CapitalCitiesActivity"
             android:screenOrientation="sensorPortrait" />
         <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".ScoreActivity"
             android:screenOrientation="sensorPortrait" />
     </application>
