@@ -7,6 +7,8 @@
 
 package com.izico.geoquizz
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
@@ -18,7 +20,7 @@ import android.widget.Button
 import com.izico.geoquizz.helpers.DatabasesHelper
 import com.izico.geoquizz.helpers.GameHelper
 import com.izico.geoquizz.model.Country
-import ninja.sakib.pultusorm.core.PultusORM
+import com.izico.geoquizz.widget.LifeRemainingView
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -31,6 +33,7 @@ class CapitalCitiesActivity : AppCompatActivity() {
     private var remainingLife = 0
     private var propositionsToBeMade = 0
     private var score = 0
+    private var lifeRemainingView: LifeRemainingView? = null
 
     private var alreadyAsked = ArrayList<Country>()
 
@@ -39,6 +42,11 @@ class CapitalCitiesActivity : AppCompatActivity() {
         //old way
         //setContentView(R.layout.activity_capital_cities)
 
+        this.questionStart = resources.getString(R.string.city_game_instructions)
+
+        this.remainingLife = GameHelper.getRemainingLife()
+        this.propositionsToBeMade = GameHelper.getPropositionsNumber()
+
         // DATA dataBinding
         this.dataBinding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.activity_capital_cities)
         this.dataBinding?.setVariable(BR.answerHandler, this)
@@ -46,10 +54,8 @@ class CapitalCitiesActivity : AppCompatActivity() {
 
         retrieveCountries()
 
-        this.questionStart = resources.getString(R.string.city_game_instructions)
-
-        this.remainingLife = GameHelper.getRemainingLife()
-        this.propositionsToBeMade = GameHelper.getPropositionsNumber()
+        // Keep the lives views
+        this.lifeRemainingView = this.dataBinding?.root?.findViewById<LifeRemainingView>(R.id.lifeRemainingView)
 
         // Launch game
         createQuestion()
@@ -104,7 +110,7 @@ class CapitalCitiesActivity : AppCompatActivity() {
         this.countryChosen = propositionList.get(randomIndex)
         this.alreadyAsked.add(this.countryChosen as Country)
 
-        this.dataBinding?.setVariable(BR.question, this.questionStart + "\n" + this.countryChosen?.name)
+        this.dataBinding?.setVariable(BR.question, this.countryChosen?.name)
         this.dataBinding?.setVariable(BR.firstProposition, propositionList.get(0))
         this.dataBinding?.setVariable(BR.secondProposition, propositionList.get(1))
         this.dataBinding?.setVariable(BR.thirdProposition, propositionList.get(2))
@@ -116,7 +122,9 @@ class CapitalCitiesActivity : AppCompatActivity() {
     private fun checkRemainingLife() {
         --this.remainingLife
 
-        if (this.remainingLife > 0) {
+        this.lifeRemainingView?.deleteLife()
+
+        if (this.remainingLife >= 0) {
             createQuestion()
         } else {
             Log.i("QUESTIONS", "End reached")
@@ -131,5 +139,21 @@ class CapitalCitiesActivity : AppCompatActivity() {
         val pultus = DatabasesHelper.openDatabase(this)
         this.countries = pultus.find(Country())
         pultus.close()
+    }
+
+    override fun onBackPressed() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle(resources.getString(R.string.dialog_title_exit))
+        dialogBuilder.setMessage(resources.getString(R.string.dialog_message_exit))
+        dialogBuilder.setNegativeButton(resources.getString(R.string.dialog_default_negative_text), null)
+        dialogBuilder.setPositiveButton(resources.getString(R.string.dialog_default_positive_text),
+                DialogInterface.OnClickListener { dialogInterface, i -> goBackHome() })
+
+        dialogBuilder.show()
+    }
+
+    private fun goBackHome() {
+        this.startActivity(Intent(this, HomeActivity::class.java))
+        finish()
     }
 }

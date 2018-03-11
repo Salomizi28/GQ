@@ -47,8 +47,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun launchCapitalCityGame() {
-        val intent = Intent(this, CapitalCitiesActivity::class.java)
-        this.startActivity(intent)
+        this.startActivity(Intent(this, CapitalCitiesActivity::class.java))
         finish()
     }
 

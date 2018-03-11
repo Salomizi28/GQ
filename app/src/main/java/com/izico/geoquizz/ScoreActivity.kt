@@ -7,6 +7,7 @@
 
 package com.izico.geoquizz
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.support.v7.app.AppCompatActivity
@@ -41,5 +42,10 @@ class ScoreActivity : AppCompatActivity() {
             !in 0 until 37 ->  this.resources.getString(R.string.score_highest)
             else -> this.resources.getString(R.string.score_default)
         }
+    }
+
+    override fun onBackPressed() {
+        this.startActivity(Intent(this, HomeActivity::class.java))
+        finish()
     }
 }

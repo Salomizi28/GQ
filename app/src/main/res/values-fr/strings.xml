@@ -16,7 +16,7 @@
     <string name="capitals_index">Index des capitales</string>
 
     <!-- QUESTION -->
-    <string name="city_game_instructions">Qulle est la capitale de ce pays ?</string>
+    <string name="city_game_instructions">(pays)</string>
 
     <!-- SCORE -->
     <string name="final_score">Score final</string>
@@ -26,5 +26,8 @@
     <string name="score_low">Mouais !</string>
     <string name="score_lowest">Franchement pas top !</string>
     <string name="score_default">Soit !</string>
+    <string name="dialog_default_negative_text">ANNULER</string>
+    <string name="dialog_title_exit">Quitter la partie</string>
+    <string name="dialog_message_exit">Êtes-vous sûr(e) de vouloir quitter la partie ?</string>
 
 </resources>

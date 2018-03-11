@@ -12,13 +12,19 @@
     <!-- LANGUAGE -->
     <string name="french_language" translatable="false">français</string>
 
+    <!-- DIALOGS -->
+    <string name="dialog_default_positive_text" translatable="false">OK</string>
+    <string name="dialog_default_negative_text">CANCEL</string>
+    <string name="dialog_title_exit">Exit the game</string>
+    <string name="dialog_message_exit">Are you sure you want to exit the game ?</string>
+
     <!-- GAMES -->
     <string name="capitals">Capital cities</string>
     <string name="flags">Flags</string>
     <string name="capitals_index">Capital cities index</string>
 
     <!-- QUESTION -->
-    <string name="city_game_instructions">What is the capital city of this country ?</string>
+    <string name="city_game_instructions">(country)</string>
 
     <!-- SCORE -->
     <string name="final_score">Final score</string>

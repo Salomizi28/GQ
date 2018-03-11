@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Salomon ROSSELL on 28/01/18 18:38
+  ~ Copyright (c) 2018. All rights reserved.
+  ~
+  ~ Last modified 28/01/18 18:38
+  -->
+
+<resources>
+    <declare-styleable name="LifeRemainingView">
+        <attr name="viewCount" format="integer"/>
+        <attr name="drawableReference" format="reference"/>
+        <attr name="orientation" format="integer"/>
+        <attr name="padding" format="dimension"/>
+    </declare-styleable>
+    
+</resources>

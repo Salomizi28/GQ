@@ -37,7 +37,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.izico.geoquizz.CapitalCitiesActivity"
-        android:background="@color/ocean_blue">
+        android:background="@color/light_beige">
+
+        <com.izico.geoquizz.widget.LifeRemainingView
+            android:id="@+id/lifeRemainingView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="10dp"
+            android:clickable="false"
+            app:drawableReference="@drawable/ic_heart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:viewCount="5" />
 
         <TextView
             android:id="@+id/question_label"
@@ -46,12 +58,27 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginStart="@dimen/default_margin"
-            android:layout_marginTop="40dp"
-            android:text="@{question}"
+            android:layout_marginTop="20dp"
+            android:text="@string/city_game_instructions"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Voici la question qui est trop longue" />
+            app:layout_constraintTop_toBottomOf="@+id/lifeRemainingView"
+            tools:text="country" />
+
+        <TextView
+            android:id="@+id/country_chosen"
+            style="@style/questionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="3dp"
+            android:text="@{question}"
+            app:layout_constraintEnd_toEndOf="@+id/question_label"
+            app:layout_constraintStart_toStartOf="@+id/question_label"
+            app:layout_constraintTop_toBottomOf="@+id/question_label"
+            tools:text="Tadjikistan" />
 
         <Button
             android:id="@+id/first_proposition"
@@ -59,11 +86,11 @@
             android:layout_width="@dimen/text_width"
             android:layout_height="@dimen/text_height"
             android:layout_marginStart="@dimen/answer_button_margin"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:onClick="@{answerHandler::checkAnswer}"
             android:text="@{firstProposition.capital}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question_label"
+            app:layout_constraintTop_toBottomOf="@+id/country_chosen"
             tools:text="Ceci est un texte plutot long" />
 
         <Button
@@ -107,7 +134,6 @@
             app:layout_constraintStart_toStartOf="@+id/second_proposition"
             app:layout_constraintTop_toBottomOf="@+id/second_proposition"
             tools:text="Paris" />
-
 
     </android.support.constraint.ConstraintLayout>
 
