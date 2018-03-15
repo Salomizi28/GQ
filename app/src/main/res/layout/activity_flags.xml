@@ -1,55 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Created by Salomon ROSSELL on 08/01/18 13:41
+  ~ Created by Salomon ROSSELL on 15/03/18 22:42
   ~ Copyright (c) 2018. All rights reserved.
   ~
-  ~ Last modified 08/01/18 13:41
+  ~ Last modified 15/03/18 22:42
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.izico.geoquizz.FlagsActivity">
 
     <data>
         <variable
             name="question"
             type="String"/>
         <variable
+            name="answerHandler"
+            type="com.izico.geoquizz.FlagsActivity"/>
+        <variable
             name="firstAnswer"
-            type="com.izico.geoquizz.model.Country"/>
+            type="String"/>
         <variable
             name="secondAnswer"
-            type="com.izico.geoquizz.model.Country"/>
+            type="String"/>
         <variable
             name="thirdAnswer"
-            type="com.izico.geoquizz.model.Country"/>
+            type="String"/>
         <variable
             name="fourthAnswer"
-            type="com.izico.geoquizz.model.Country"/>
-        <variable
-            name="answerHandler"
-            type="com.izico.geoquizz.CapitalCitiesActivity"/>
-
+            type="String"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.izico.geoquizz.CapitalCitiesActivity"
-        android:background="@color/light_beige">
-
-        <com.izico.geoquizz.widget.LifeRemainingView
-            android:id="@+id/lifeRemainingView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/default_margin"
-            android:layout_marginTop="10dp"
-            android:clickable="false"
-            app:drawableReference="@drawable/ic_heart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:viewCount="5" />
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/question_label"
@@ -58,12 +44,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginStart="@dimen/default_margin"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/big_margin"
             android:text="@string/city_game_instructions"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lifeRemainingView"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="country" />
 
         <TextView
@@ -78,61 +64,61 @@
             app:layout_constraintTop_toBottomOf="@+id/question_label"
             tools:text="République Démocratique Du Congo" />
 
-        <Button
+
+        <ImageButton
             android:id="@+id/first_proposition"
-            style="@style/answerButton"
+            style="@style/answerImageButton"
             android:layout_width="@dimen/answer_width"
             android:layout_height="@dimen/answer_height"
             android:layout_marginStart="@dimen/answer_button_margin"
             android:layout_marginTop="30dp"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:text="@{firstAnswer.capital}"
+            android:src="@{firstAnswer}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/country_chosen"
-            tools:text="Ceci est un texte plutot long" />
+            tools:src="@drawable/ic_flag" />
 
-        <Button
+        <ImageButton
             android:id="@+id/second_proposition"
-            style="@style/answerButton"
+            style="@style/answerImageButton"
             android:layout_width="@dimen/answer_width"
             android:layout_height="@dimen/answer_height"
             android:layout_marginEnd="@dimen/answer_button_margin"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:text="@{secondAnswer.capital}"
+            android:src="@{secondAnswer}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/first_proposition"
-            tools:text="Ouagadougou" />
+            tools:src="@drawable/ic_flag" />
 
-        <Button
+        <ImageButton
             android:id="@+id/third_proposition"
-            style="@style/answerButton"
+            style="@style/answerImageButton"
             android:layout_width="@dimen/answer_width"
             android:layout_height="@dimen/answer_height"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="50dp"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:text="@{thirdAnswer.capital}"
+            android:src="@{thirdAnswer}"
             app:layout_constraintEnd_toEndOf="@+id/first_proposition"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/first_proposition"
             app:layout_constraintTop_toBottomOf="@+id/first_proposition"
-            tools:text="Andorre-La-Vieille" />
+            tools:src="@drawable/ic_flag" />
 
-        <Button
+        <ImageButton
             android:id="@+id/fourth_proposition"
-            style="@style/answerButton"
+            style="@style/answerImageButton"
             android:layout_width="@dimen/answer_width"
             android:layout_height="@dimen/answer_height"
             android:layout_marginStart="8dp"
             android:layout_marginTop="50dp"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:text="@{fourthAnswer.capital}"
+            android:src="@{fourthAnswer}"
             app:layout_constraintEnd_toEndOf="@+id/second_proposition"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/second_proposition"
             app:layout_constraintTop_toBottomOf="@+id/second_proposition"
-            tools:text="Paris" />
-
+            tools:src="@drawable/ic_flag" />
     </android.support.constraint.ConstraintLayout>
 
 </layout>

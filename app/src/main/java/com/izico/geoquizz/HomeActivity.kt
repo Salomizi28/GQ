@@ -25,7 +25,7 @@ class HomeActivity : AppCompatActivity() {
 
         // DATA BINDING
         val binding = DataBindingUtil.setContentView<ContentHomeBinding>(this, R.layout.content_home)
-        binding.homeActivityButtonHandler = this // Injecting the view model into the layout file
+        binding.homeActivityButtonHandler = this
         binding.executePendingBindings()
 
         DatabasesHelper.init(this)
@@ -34,11 +34,17 @@ class HomeActivity : AppCompatActivity() {
     fun onGameChosen(view: View) {
         when (view.id) {
             R.id.capitals_game_button -> launchCapitalCityGame()
+            R.id.flags_game_button -> launchFlagsGame()
         }
     }
 
     private fun launchCapitalCityGame() {
         this.startActivity(Intent(this, CapitalCitiesActivity::class.java))
+        finish()
+    }
+
+    private fun launchFlagsGame() {
+        this.startActivity(Intent(this, FlagsActivity::class.java))
         finish()
     }
 

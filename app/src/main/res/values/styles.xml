@@ -76,6 +76,10 @@
         <item name="android:padding">4dp</item>
     </style>
 
+    <style name="answerImageButton">
+        <item name="android:background">@color/transparent</item>
+    </style>
+
     <style name="scoreText" parent="defaultText">
         <item name="android:textSize">@dimen/title_size</item>
         <item name="android:textColor">@color/ocean_blue</item>

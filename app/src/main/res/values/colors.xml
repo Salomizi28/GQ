@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
     <color name="ocean_blue">#095694</color>
     <color name="sky_blue">#4199E0</color>
     <color name="light_blue">#63BAFF</color>
