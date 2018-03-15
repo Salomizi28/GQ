@@ -29,7 +29,6 @@ class CapitalCitiesActivity : AppCompatActivity() {
     private var dataBinding: ActivityCapitalCitiesBinding? = null
     private var countries = mutableListOf<Any>()
     private var countryChosen: Country? = null
-    private var questionStart: String? = null
     private var remainingLife = 0
     private var propositionsToBeMade = 0
     private var score = 0
@@ -39,8 +38,6 @@ class CapitalCitiesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        this.questionStart = resources.getString(R.string.city_game_instructions)
 
         this.remainingLife = GameHelper.getRemainingLife()
         this.propositionsToBeMade = GameHelper.getPropositionsNumber()

@@ -26,8 +26,8 @@ import java.util.*
 
 object DatabasesHelper {
 
-    private val FIRST_LAUNCH_KEY = "firstLaunch"
-    private val COUNTRY_DATABASE = "country.db"
+    private const val FIRST_LAUNCH_KEY = "firstLaunch"
+    private const val COUNTRY_DATABASE = "country.db"
 
     fun init(context: Context)  {
         val sharedPrefs = context.getSharedPreferences(null, Context.MODE_PRIVATE)
