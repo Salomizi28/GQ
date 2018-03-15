@@ -16,16 +16,16 @@
             name="question"
             type="String"/>
         <variable
-            name="firstProposition"
+            name="firstAnswer"
             type="com.izico.geoquizz.model.Country"/>
         <variable
-            name="secondProposition"
+            name="secondAnswer"
             type="com.izico.geoquizz.model.Country"/>
         <variable
-            name="thirdProposition"
+            name="thirdAnswer"
             type="com.izico.geoquizz.model.Country"/>
         <variable
-            name="fourthProposition"
+            name="fourthAnswer"
             type="com.izico.geoquizz.model.Country"/>
         <variable
             name="answerHandler"
@@ -69,16 +69,14 @@
         <TextView
             android:id="@+id/country_chosen"
             style="@style/questionLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/default_margin"
-            android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="3dp"
             android:text="@{question}"
             app:layout_constraintEnd_toEndOf="@+id/question_label"
             app:layout_constraintStart_toStartOf="@+id/question_label"
             app:layout_constraintTop_toBottomOf="@+id/question_label"
-            tools:text="Tadjikistan" />
+            tools:text="République Démocratique Du Congo" />
 
         <Button
             android:id="@+id/first_proposition"
@@ -88,7 +86,7 @@
             android:layout_marginStart="@dimen/answer_button_margin"
             android:layout_marginTop="30dp"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:text="@{firstProposition.capital}"
+            android:text="@{firstAnswer.capital}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/country_chosen"
             tools:text="Ceci est un texte plutot long" />
@@ -100,7 +98,7 @@
             android:layout_height="@dimen/text_height"
             android:layout_marginEnd="@dimen/answer_button_margin"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:text="@{secondProposition.capital}"
+            android:text="@{secondAnswer.capital}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/first_proposition"
             tools:text="Ouagadougou" />
@@ -113,7 +111,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginTop="50dp"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:text="@{thirdProposition.capital}"
+            android:text="@{thirdAnswer.capital}"
             app:layout_constraintEnd_toEndOf="@+id/first_proposition"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/first_proposition"
@@ -128,7 +126,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="50dp"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:text="@{fourthProposition.capital}"
+            android:text="@{fourthAnswer.capital}"
             app:layout_constraintEnd_toEndOf="@+id/second_proposition"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/second_proposition"

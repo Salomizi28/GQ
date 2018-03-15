@@ -34,5 +34,6 @@
     <string name="score_low">Not so good</string>
     <string name="score_lowest">Wow this is bad !</string>
     <string name="score_default">Fair enough !</string>
+    <string name="restart">Play again</string>
 
 </resources>

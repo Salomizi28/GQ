@@ -10,31 +10,22 @@ package com.izico.geoquizz
 
 import android.content.Intent
 import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.izico.geoquizz.helpers.DatabasesHelper
+import com.izico.geoquizz.databinding.ContentHomeBinding
 
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // no data binding
-        //setContentView(R.layout.activity_home)
-
-        /*setSupportActionBar(toolbar)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }*/
-
         // DATA BINDING
-        val binding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.content_home)
-        binding.setVariable(BR.buttonHandler, this)
+        val binding = DataBindingUtil.setContentView<ContentHomeBinding>(this, R.layout.content_home)
+        binding.homeActivityButtonHandler = this // Injecting the view model into the layout file
         binding.executePendingBindings()
 
         DatabasesHelper.init(this)

@@ -48,10 +48,10 @@ class LifeRemainingView @JvmOverloads constructor(context: Context, attrs: Attri
             ++index
 
             val newView = ImageView(currentContext)
-            newView.setImageDrawable(currentContext?.resources?.getDrawable(imageReference, null))
+            newView.setImageDrawable(currentContext.resources?.getDrawable(imageReference, null))
             newView.setPadding(itemPadding, itemPadding, itemPadding, itemPadding)
 
-            val elevation = currentContext?.resources?.getDimension(R.dimen.button_elevation)
+            val elevation = currentContext.resources?.getDimension(R.dimen.button_elevation)
             if (elevation != null) newView.elevation = elevation
 
             this.lifeViews.add(newView)

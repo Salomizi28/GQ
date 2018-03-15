@@ -9,27 +9,32 @@ package com.izico.geoquizz
 
 import android.content.Intent
 import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.izico.geoquizz.helpers.GameHelper
+import com.izico.geoquizz.databinding.ActivityScoreBinding
 
 class ScoreActivity : AppCompatActivity() {
-
-    private var dataBinding: ViewDataBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // DATA dataBinding
-        this.dataBinding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.activity_score)
+        val dataBinding = DataBindingUtil.setContentView<ActivityScoreBinding>(this, R.layout.activity_score)
 
         // retrieve score
         val score = this.intent?.extras?.get(GameHelper.SCORE_EXTRA) as Int
 
-        this.dataBinding?.setVariable(BR.comment, computeComment(score))
-        this.dataBinding?.setVariable(BR.finalScore, score.toString())
-        this.dataBinding?.executePendingBindings()
+        dataBinding?.scoreActivityButtonHandler = this
+        dataBinding?.commentText = computeComment(score)
+        dataBinding?.finalScore = score.toString()
+        dataBinding?.executePendingBindings()
+    }
+
+    fun onRestartGame(view: View) {
+        this.startActivity(Intent(this, CapitalCitiesActivity::class.java))
+        finish()
     }
 
     private fun computeComment(score: Int): String {

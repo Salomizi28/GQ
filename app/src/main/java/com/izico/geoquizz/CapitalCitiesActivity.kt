@@ -11,7 +11,6 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -23,10 +22,11 @@ import com.izico.geoquizz.model.Country
 import com.izico.geoquizz.widget.LifeRemainingView
 import java.util.*
 import kotlin.collections.ArrayList
+import com.izico.geoquizz.databinding.ActivityCapitalCitiesBinding
 
 class CapitalCitiesActivity : AppCompatActivity() {
 
-    private var dataBinding: ViewDataBinding? = null
+    private var dataBinding: ActivityCapitalCitiesBinding? = null
     private var countries = mutableListOf<Any>()
     private var countryChosen: Country? = null
     private var questionStart: String? = null
@@ -39,8 +39,6 @@ class CapitalCitiesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //old way
-        //setContentView(R.layout.activity_capital_cities)
 
         this.questionStart = resources.getString(R.string.city_game_instructions)
 
@@ -48,8 +46,8 @@ class CapitalCitiesActivity : AppCompatActivity() {
         this.propositionsToBeMade = GameHelper.getPropositionsNumber()
 
         // DATA dataBinding
-        this.dataBinding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.activity_capital_cities)
-        this.dataBinding?.setVariable(BR.answerHandler, this)
+        this.dataBinding = DataBindingUtil.setContentView<ActivityCapitalCitiesBinding>(this, R.layout.activity_capital_cities)
+        this.dataBinding?.answerHandler = this
         this.dataBinding?.executePendingBindings()
 
         retrieveCountries()
@@ -110,11 +108,11 @@ class CapitalCitiesActivity : AppCompatActivity() {
         this.countryChosen = propositionList.get(randomIndex)
         this.alreadyAsked.add(this.countryChosen as Country)
 
-        this.dataBinding?.setVariable(BR.question, this.countryChosen?.name)
-        this.dataBinding?.setVariable(BR.firstProposition, propositionList.get(0))
-        this.dataBinding?.setVariable(BR.secondProposition, propositionList.get(1))
-        this.dataBinding?.setVariable(BR.thirdProposition, propositionList.get(2))
-        this.dataBinding?.setVariable(BR.fourthProposition, propositionList.get(3))
+        this.dataBinding?.question = this.countryChosen?.name
+        this.dataBinding?.firstAnswer = propositionList[0]
+        this.dataBinding?.secondAnswer = propositionList[1]
+        this.dataBinding?.thirdAnswer = propositionList[2]
+        this.dataBinding?.fourthAnswer = propositionList[3]
         this.dataBinding?.executePendingBindings()
 
     }
@@ -147,7 +145,7 @@ class CapitalCitiesActivity : AppCompatActivity() {
         dialogBuilder.setMessage(resources.getString(R.string.dialog_message_exit))
         dialogBuilder.setNegativeButton(resources.getString(R.string.dialog_default_negative_text), null)
         dialogBuilder.setPositiveButton(resources.getString(R.string.dialog_default_positive_text),
-                DialogInterface.OnClickListener { dialogInterface, i -> goBackHome() })
+                DialogInterface.OnClickListener { _, _ -> goBackHome() })
 
         dialogBuilder.show()
     }

@@ -13,7 +13,10 @@
 
     <data>
         <variable
-            name="comment"
+            name="scoreActivityButtonHandler"
+            type="com.izico.geoquizz.ScoreActivity"/>
+        <variable
+            name="commentText"
             type="String"/>
         <variable
             name="finalScore"
@@ -26,44 +29,45 @@
         tools:context="com.izico.geoquizz.ScoreActivity">
 
         <TextView
-            android:id="@+id/final_score_label"
+            android:id="@+id/score"
+            style="@style/scoreText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="100dp"
+            android:text="@{finalScore}"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/final_score"
-            tools:text="Score final" />
+            tools:text="320" />
 
         <TextView
             android:id="@+id/comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="30dp"
-            android:text="@{comment}"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="40dp"
+            android:text="@{commentText}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/score"
-            tools:text="C'est pas mal" />
+            tools:text="C'est pas mal"
+            style="@style/scoreComment" />
 
-        <TextView
-            android:id="@+id/score"
+        <Button
+            android:id="@+id/restart_button"
             android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:text="@{finalScore}"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="@string/restart"
+            android:onClick="@{scoreActivityButtonHandler::onRestartGame}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/final_score_label"
-            tools:text="32" />
+            style="@style/restartButton" />
 
     </android.support.constraint.ConstraintLayout>
 
