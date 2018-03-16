@@ -21,21 +21,33 @@
             type="com.izico.geoquizz.FlagsActivity"/>
         <variable
             name="firstAnswer"
-            type="String"/>
+            type="int"/>
         <variable
             name="secondAnswer"
-            type="String"/>
+            type="int"/>
         <variable
             name="thirdAnswer"
-            type="String"/>
+            type="int"/>
         <variable
             name="fourthAnswer"
-            type="String"/>
+            type="int"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.izico.geoquizz.widget.LifeRemainingView
+            android:id="@+id/lifeRemainingView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="10dp"
+            android:clickable="false"
+            app:drawableReference="@drawable/ic_heart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:viewCount="5" />
 
         <TextView
             android:id="@+id/question_label"
@@ -49,7 +61,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/lifeRemainingView"
             tools:text="country" />
 
         <TextView
@@ -73,10 +85,10 @@
             android:layout_marginStart="@dimen/answer_button_margin"
             android:layout_marginTop="30dp"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:src="@{firstAnswer}"
+            flagResource="@{firstAnswer}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/country_chosen"
-            tools:src="@drawable/ic_flag" />
+            tools:src="@mipmap/al" />
 
         <ImageButton
             android:id="@+id/second_proposition"
@@ -85,10 +97,10 @@
             android:layout_height="@dimen/answer_height"
             android:layout_marginEnd="@dimen/answer_button_margin"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:src="@{secondAnswer}"
+            flagResource="@{secondAnswer}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/first_proposition"
-            tools:src="@drawable/ic_flag" />
+            tools:src="@mipmap/fr" />
 
         <ImageButton
             android:id="@+id/third_proposition"
@@ -96,14 +108,14 @@
             android:layout_width="@dimen/answer_width"
             android:layout_height="@dimen/answer_height"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:src="@{thirdAnswer}"
+            flagResource="@{thirdAnswer}"
             app:layout_constraintEnd_toEndOf="@+id/first_proposition"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/first_proposition"
             app:layout_constraintTop_toBottomOf="@+id/first_proposition"
-            tools:src="@drawable/ic_flag" />
+            tools:src="@mipmap/_do" />
 
         <ImageButton
             android:id="@+id/fourth_proposition"
@@ -111,14 +123,14 @@
             android:layout_width="@dimen/answer_width"
             android:layout_height="@dimen/answer_height"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:onClick="@{answerHandler::checkAnswer}"
-            android:src="@{fourthAnswer}"
+            flagResource="@{fourthAnswer}"
             app:layout_constraintEnd_toEndOf="@+id/second_proposition"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/second_proposition"
             app:layout_constraintTop_toBottomOf="@+id/second_proposition"
-            tools:src="@drawable/ic_flag" />
+            tools:src="@mipmap/am" />
     </android.support.constraint.ConstraintLayout>
 
 </layout>

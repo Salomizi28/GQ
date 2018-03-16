@@ -77,7 +77,8 @@
     </style>
 
     <style name="answerImageButton">
-        <item name="android:background">@color/transparent</item>
+        <item name="android:background">@drawable/background_black_border</item>
+        <item name="android:scaleType">fitXY</item>
     </style>
 
     <style name="scoreText" parent="defaultText">

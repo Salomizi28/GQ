@@ -8,6 +8,7 @@
 package com.izico.geoquizz
 
 import android.content.Intent
+import android.databinding.BindingAdapter
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -20,6 +21,13 @@ import com.izico.geoquizz.helpers.GameHelper
 import com.izico.geoquizz.model.Country
 import com.izico.geoquizz.widget.LifeRemainingView
 import java.util.*
+import kotlin.collections.ArrayList
+
+// Custom binding
+@BindingAdapter("flagResource")
+fun setImageButtonResource(imageButton: ImageButton, resource: Int) {
+    imageButton.setImageResource(resource)
+}
 
 class FlagsActivity: AppCompatActivity() {
 
@@ -46,25 +54,11 @@ class FlagsActivity: AppCompatActivity() {
 
         retrieveCountries()
 
-        checkFlags()
-
         // Keep the lives views
         this.lifeRemainingView =  this.dataBinding?.root?.findViewById<LifeRemainingView>(R.id.lifeRemainingView)
 
         // Launch game
         createQuestion()
-    }
-
-    private fun checkFlags() {
-
-        for (item: Any in this.countries) {
-            val country: Country = item as Country
-
-            val flag = resources?.getIdentifier(country.code2?.toLowerCase(), "mipmap", packageName)
-            if (flag != null && flag <= 0) {
-                Log.i("FLAG", "Missing " + country.name + " code : " + country.code2)
-            }
-        }
     }
 
     private fun createQuestion() {
@@ -89,15 +83,15 @@ class FlagsActivity: AppCompatActivity() {
 
     private fun askQuestion(propositionList: ArrayList<Country>) {
         val randomIndex = Random().nextInt(propositionList.size)
-        this.countryChosen = propositionList.get(randomIndex)
+        this.countryChosen = propositionList[randomIndex]
         this.alreadyAsked.add(this.countryChosen as Country)
 
-        /*this.dataBinding?.question = this.countryChosen?.name
-        this.dataBinding?.firstAnswer = propositionList[0]
-        this.dataBinding?.secondAnswer = propositionList[1]
-        this.dataBinding?.thirdAnswer = propositionList[2]
-        this.dataBinding?.fourthAnswer = propositionList[3]
-        this.dataBinding?.executePendingBindings()*/
+        this.dataBinding?.question = this.countryChosen?.name
+        this.dataBinding?.firstAnswer = propositionList[0].flagResId
+        this.dataBinding?.secondAnswer = propositionList[1].flagResId
+        this.dataBinding?.thirdAnswer = propositionList[2].flagResId
+        this.dataBinding?.fourthAnswer = propositionList[3].flagResId
+        this.dataBinding?.executePendingBindings()
 
     }
 
@@ -119,9 +113,9 @@ class FlagsActivity: AppCompatActivity() {
 
     fun checkAnswer(view: View) {
         if (view is ImageButton) {
-            /*val answer = view as ImageButton .background
+            /*val answer = view as ImageButton
 
-            if (answer.equals(this.countryChosen?.capital)) {
+            if (answer.resou == this.countryChosen?.flagResId) {
                 handleSuccess()
             } else {
                 handleError()

@@ -43,6 +43,12 @@ object DatabasesHelper {
             try {
                 for (index in 0..(jsonArray.length() - 1)) {
                     val newCountry = Gson().fromJson(jsonArray.getString(index), Country::class.java)
+                    val newFlagId = context?.resources?.getIdentifier(newCountry.code2?.toLowerCase(), "mipmap", context.packageName)
+
+                    if (newFlagId != null) {
+                        newCountry.flagResId = newFlagId
+                    }
+
                     pultus.save(newCountry)
                 }
                 pultus.close()

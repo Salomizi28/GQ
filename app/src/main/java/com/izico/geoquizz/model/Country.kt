@@ -24,5 +24,6 @@ class Country {
     var capital: String? = null
     var code2: String? = null
     var code3: String? = null
+    var flagResId: Int = -1
 
 }

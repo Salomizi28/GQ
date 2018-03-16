@@ -9,3 +9,4 @@
 .externalNativeBuild
 /app/src/main/res/font
 /app/src/main/assets
+/app/src/main/res/mipmap/*.png
