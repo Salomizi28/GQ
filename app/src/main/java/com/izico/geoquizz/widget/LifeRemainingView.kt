@@ -18,7 +18,7 @@ import com.izico.geoquizz.R
  * Component displaying remaining lives
  */
 
-class LifeRemainingView @JvmOverloads constructor(context: Context, attrs: AttributeSet?) :
+class LifeRemainingView constructor(context: Context, attrs: AttributeSet?) :
         LinearLayout(context, attrs) {
 
     private var lifeViews: MutableList<ImageView> = ArrayList()
