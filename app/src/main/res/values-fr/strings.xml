@@ -27,7 +27,7 @@
     <string name="score_lowest">Franchement pas top !</string>
     <string name="score_default">Soit !</string>
     <string name="dialog_default_negative_text">ANNULER</string>
-    <string name="dialog_title_exit">Quitter la partie</string>
+    <string name="dialog_title_exit">Quitter</string>
     <string name="dialog_message_exit">Êtes-vous sûr(e) de vouloir quitter la partie ?</string>
     <string name="restart">Rejouer</string>
 

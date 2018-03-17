@@ -14,15 +14,13 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.View
-import android.widget.Button
+import com.izico.geoquizz.databinding.ActivityCapitalCitiesBinding
 import com.izico.geoquizz.helpers.DatabasesHelper
 import com.izico.geoquizz.helpers.GameHelper
 import com.izico.geoquizz.model.Country
 import com.izico.geoquizz.widget.LifeRemainingView
 import java.util.*
 import kotlin.collections.ArrayList
-import com.izico.geoquizz.databinding.ActivityCapitalCitiesBinding
 
 class CapitalCitiesActivity : AppCompatActivity() {
 
@@ -56,15 +54,11 @@ class CapitalCitiesActivity : AppCompatActivity() {
         createQuestion()
     }
 
-    fun checkAnswer(view: View) {
-        if (view is Button) {
-            val answer = view.text
-
-            if (answer.equals(this.countryChosen?.capital)) {
-                handleSuccess()
-            } else {
-                handleError()
-            }
+    fun checkAnswer(answer: Country) {
+        if (answer.capital.equals(this.countryChosen?.capital)) {
+            handleSuccess()
+        } else {
+            handleError()
         }
     }
 

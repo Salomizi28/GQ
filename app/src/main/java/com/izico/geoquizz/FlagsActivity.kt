@@ -7,13 +7,14 @@
 
 package com.izico.geoquizz
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.databinding.BindingAdapter
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import com.izico.geoquizz.databinding.ActivityFlagsBinding
 import com.izico.geoquizz.helpers.DatabasesHelper
@@ -87,10 +88,10 @@ class FlagsActivity: AppCompatActivity() {
         this.alreadyAsked.add(this.countryChosen as Country)
 
         this.dataBinding?.question = this.countryChosen?.name
-        this.dataBinding?.firstAnswer = propositionList[0].flagResId
-        this.dataBinding?.secondAnswer = propositionList[1].flagResId
-        this.dataBinding?.thirdAnswer = propositionList[2].flagResId
-        this.dataBinding?.fourthAnswer = propositionList[3].flagResId
+        this.dataBinding?.firstAnswer = propositionList[0]
+        this.dataBinding?.secondAnswer = propositionList[1]
+        this.dataBinding?.thirdAnswer = propositionList[2]
+        this.dataBinding?.fourthAnswer = propositionList[3]
         this.dataBinding?.executePendingBindings()
 
     }
@@ -111,15 +112,11 @@ class FlagsActivity: AppCompatActivity() {
         }
     }
 
-    fun checkAnswer(view: View) {
-        if (view is ImageButton) {
-            /*val answer = view as ImageButton
-
-            if (answer.resou == this.countryChosen?.flagResId) {
-                handleSuccess()
-            } else {
-                handleError()
-            }*/
+    fun checkAnswer(answer: Country) {
+        if (answer.capital == this.countryChosen?.capital) {
+            handleSuccess()
+        } else {
+            handleError()
         }
     }
 
@@ -139,5 +136,21 @@ class FlagsActivity: AppCompatActivity() {
         val pultus = DatabasesHelper.openDatabase(this)
         this.countries = pultus.find(Country())
         pultus.close()
+    }
+
+    override fun onBackPressed() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle(resources.getString(R.string.dialog_title_exit))
+        dialogBuilder.setMessage(resources.getString(R.string.dialog_message_exit))
+        dialogBuilder.setNegativeButton(resources.getString(R.string.dialog_default_negative_text), null)
+        dialogBuilder.setPositiveButton(resources.getString(R.string.dialog_default_positive_text),
+                DialogInterface.OnClickListener { _, _ -> goBackHome() })
+
+        dialogBuilder.show()
+    }
+
+    private fun goBackHome() {
+        this.startActivity(Intent(this, HomeActivity::class.java))
+        finish()
     }
 }

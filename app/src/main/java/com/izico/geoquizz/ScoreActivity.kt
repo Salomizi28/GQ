@@ -41,10 +41,10 @@ class ScoreActivity : AppCompatActivity() {
 
         return when (score) {
             in 0 until 10 -> this.resources.getString(R.string.score_lowest)
-            in 11 until 16 -> this.resources.getString(R.string.score_low)
-            in 17 until 25 ->  this.resources.getString(R.string.score_average)
-            in 26 until 37 ->  this.resources.getString(R.string.score_high)
-            !in 0 until 37 ->  this.resources.getString(R.string.score_highest)
+            in 11 until 20 -> this.resources.getString(R.string.score_low)
+            in 21 until 30 ->  this.resources.getString(R.string.score_average)
+            in 31 until 40 ->  this.resources.getString(R.string.score_high)
+            !in 0 until 41 ->  this.resources.getString(R.string.score_highest)
             else -> this.resources.getString(R.string.score_default)
         }
     }

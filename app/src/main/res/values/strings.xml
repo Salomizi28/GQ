@@ -15,7 +15,7 @@
     <!-- DIALOGS -->
     <string name="dialog_default_positive_text" translatable="false">OK</string>
     <string name="dialog_default_negative_text">CANCEL</string>
-    <string name="dialog_title_exit">Exit the game</string>
+    <string name="dialog_title_exit">Exit</string>
     <string name="dialog_message_exit">Are you sure you want to exit the game ?</string>
 
     <!-- GAMES -->
