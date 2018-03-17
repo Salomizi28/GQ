@@ -32,6 +32,10 @@
             android:screenOrientation="sensorPortrait" />
         <activity
             android:theme="@style/AppTheme.NoActionBar"
+            android:name=".IndexActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".ScoreActivity"
             android:screenOrientation="sensorPortrait" />
     </application>

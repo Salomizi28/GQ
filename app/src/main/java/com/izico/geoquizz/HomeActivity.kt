@@ -35,6 +35,7 @@ class HomeActivity : AppCompatActivity() {
         when (view.id) {
             R.id.capitals_game_button -> launchCapitalCityGame()
             R.id.flags_game_button -> launchFlagsGame()
+            R.id.index_button -> launchIndex()
         }
     }
 
@@ -45,6 +46,11 @@ class HomeActivity : AppCompatActivity() {
 
     private fun launchFlagsGame() {
         this.startActivity(Intent(this, FlagsActivity::class.java))
+        finish()
+    }
+
+    private fun launchIndex() {
+        this.startActivity(Intent(this, IndexActivity::class.java))
         finish()
     }
 
